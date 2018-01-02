@@ -11,7 +11,14 @@ RUN apt-get update && \
     curl -L https://github.com/tianon/gosu/releases/download/1.10/gosu-amd64 > /usr/sbin/gosu && \
     chmod +x /usr/sbin/gosu && \
     apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    grafana-cli plugins install grafana-kairosdb-datasource && \
+    grafana-cli plugins install camptocamp-prometheus-alertmanager-datasource && \
+    grafana-cli plugins install natel-influx-admin-panel && \
+    grafana-cli plugins install grafana-worldmap-panel && \
+    grafana-cli plugins install grafana-clock-panel && \
+    grafana-cli plugins install grafana-piechart-panel && \
+    grafana-cli plugins update-all
 
 VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 
