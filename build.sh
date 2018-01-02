@@ -8,14 +8,14 @@ if [ "$_grafana_version" != "" ]; then
 	echo "Download url: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_${_grafana_version}_amd64.deb"
 	docker build \
 		--build-arg DOWNLOAD_URL=https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_${_grafana_version}_amd64.deb \
-		--tag "grafana/grafana:${_grafana_version}" \
+		--tag "pwnp0n/grafana:${_grafana_version}" \
 		--no-cache=true .
-	docker tag grafana/grafana:${_grafana_version} grafana/grafana:latest
+	docker tag pwnp0n/grafana:${_grafana_version} pwnp0n/grafana:latest
 
 else
 	echo "Building latest for master"
 	docker build \
 		--build-arg DOWNLOAD_URL=https://s3-us-west-2.amazonaws.com/grafana-releases/master/grafana_latest_amd64.deb \
-		--tag "grafana/grafana:master" \
+		--tag "pwnp0n/grafana:master" \
 		--no-cache=true .
 fi
